@@ -1,0 +1,323 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: eksheba
+  description: EkSheba system
+  contact: {}
+host: esb.beta.doptor.gov.bd:8280
+basePath: /
+securityDefinitions: {}
+schemes:
+- http
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  /token/create:
+    post:
+      description: 'return a token which is used in other APIs as authorization header'
+      summary: create token
+      tags:
+      - Access
+      operationId: TokenCreatePost
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/AccessApiResponse"
+      security: []
+  /isdp/notifyLifeEvent:
+    post:
+      description: 'notify live event'
+      summary: Life Event Notification
+      tags:
+      - Other
+      operationId: IsdpNotifyLifeEventPost
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/x-www-form-urlencoded
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Accept
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: system_id
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: office_code
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: life_event_code
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: citizen_id
+        in: formData
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      - name: citizen_id_type
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: effective_date
+        in: formData
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      - name: end_date
+        in: formData
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/OtherApiResponse"
+  /isdp/serviceApplicationNotification:
+    post:
+      description: 'notify service application'
+      summary: Service Application Notification
+      tags:
+      - Other
+      operationId: IsdpServiceApplicationNotificationPost
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/x-www-form-urlencoded
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: system_id
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: office_code
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: service_code
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: citizen_id
+        in: formData
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      - name: citizen_id_type
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: effective_date
+        in: formData
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      - name: end_date
+        in: formData
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/OtherApiResponse"
+  /isdp/serviceDeliveryNotification:
+    post:
+      description: 'notify service delivery notification'
+      summary: Service Delivery Notification
+      tags:
+      - Other
+      operationId: IsdpServiceDeliveryNotificationPost
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/x-www-form-urlencoded
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: system_id
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: office_code
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: service_code
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: citizen_id
+        in: formData
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      - name: citizen_id_type
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: effective_date
+        in: formData
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      - name: end_date
+        in: formData
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/OtherApiResponse"
+  /isdp/serviceRejectionNotification:
+    post:
+      description: 'notify service rejection notification'
+      summary: Service Rejection Notification
+      tags:
+      - Other
+      operationId: IsdpServiceRejectionNotificationPost
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/x-www-form-urlencoded
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: system_id
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: office_code
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: service_code
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: citizen_id
+        in: formData
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      - name: citizen_id_type
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: effective_date
+        in: formData
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/OtherApiResponse"
+tags:
+- name: Other
+  description: ''
+- name: Access
+  description: ''
+  
+definitions:
+  AccessApiResponse:
+    type: "object"
+    properties:
+      validity:
+        type: "integer"
+        format: "int32"
+      token:
+        type: "string"
+  OtherApiResponse:
+    type: "object"
+    properties:
+      message:
+        type: "string"
+      message_key:
+        type: "string"
